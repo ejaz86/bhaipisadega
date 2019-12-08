@@ -34,7 +34,7 @@ public class LoanService {
 
 	public List<Loan> getLoansByUserId(Long userId) {
 		List<Loan> loans = loanRepository.findByLoanUserIdOrderByCreatedDateDesc(userId);
-		Set<Long> userIds = loans.stream().map(Loan::getLoanUserId).collect(Collectors.toSet());
+		Set<Long> userIds = loans.stream().map(Loan::getLendUserId).collect(Collectors.toSet());
 		userIds.add(userId);
 		return addUserDetails(loans, userIds);
 	}
